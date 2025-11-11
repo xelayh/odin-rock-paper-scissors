@@ -10,7 +10,7 @@ const inRange = (input) => input === "rock" || input === "paper" || input === "s
 
 // logic to get the human choice
 function getPlayerChoice()  {
-    const input = prompt("Type: Rock Paper Scissors").toLowerCase();
+    const input = prompt('Type: Rock Paper Scissors').toLowerCase();
     return isValid(input) && inRange(input) ? input : getPlayerChoice();
 } 
 
@@ -26,6 +26,16 @@ function checkRoundWinner(playerChoice, computerChoice) {
     }  
 }
 
+function checkGameWinner() {
+    if (playerScore === computerScore){ 
+        return 'tie';
+    } else if (playerScore > computerScore) {
+        return 'player';
+    } else {
+        return 'computer';
+    }
+}
+
 function updateScore(winner) {
     if (winner === 'player') {
         playerScore++;
@@ -36,22 +46,43 @@ function updateScore(winner) {
     }
 }
 
-function showWinner(winner) {
+function showRoundWinner(winner) {
     winner === 'player' || winner === 'computer' 
-    ? alert(`Winner is ${winner}`) : alert('It\'s tie, try again!');
+    ? alert(`Round winner: ${winner}`) : alert('It\'s tie');
 }
+
+
 
 // human/computer score variables
 let playerScore = 0;
 let computerScore = 0;
 
-const computerChoice = getComputerChoice();
-const playerChoice = getPlayerChoice();
+
 
 function playRound(playerChoice, computerChoice) {
     let roundWinner = checkRoundWinner(playerChoice, computerChoice);
-    showWinner(roundWinner);
+    showRoundWinner(roundWinner);
     updateScore(roundWinner);
 }
 
- playRound(playerChoice, computerChoice);
+function showGameWinner(winner) {
+    winner === 'player' || winner === 'computer' 
+    ? alert(`Game Over! ${winner} won this game \nPlayer : [${playerScore}] Computer : [${computerScore}] `) : alert('It\'s tie, Nice Game!');
+}
+
+function playGame(rounds) {
+
+
+for (let i = 0; i < rounds; i++) {
+    const computerChoice = getComputerChoice();
+    const playerChoice = getPlayerChoice();
+
+    playRound(playerChoice, computerChoice);
+}
+
+let gameWinner = checkGameWinner();
+showGameWinner(gameWinner);
+}
+
+
+playGame(3);
