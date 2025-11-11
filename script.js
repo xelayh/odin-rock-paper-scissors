@@ -27,8 +27,18 @@ function checkRoundWinner(playerChoice, computerChoice) {
     }  
 }
 
+function updateScore(winner) {
+    if (winner === 'player') {
+        playerScore++;
+    } else if (winner === 'computer') {
+        computerScore++;
+    } else {
+        return;
+    }
+}
+
 // human/computer score variables
-let humanScore = 0;
+let playerScore = 0;
 let computerScore = 0;
 
 const computerChoice = getComputerChoice();
@@ -37,6 +47,7 @@ const playerChoice = getPlayerChoice();
 
 function playRound(playerChoice, computerChoice) {
     let roundWinner = checkRoundWinner(playerChoice, computerChoice);
+    updateScore(roundWinner);
 }
 
  playRound(playerChoice, computerChoice);
