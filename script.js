@@ -15,7 +15,6 @@ function getPlayerChoice()  {
 } 
 
 function checkRoundWinner(playerChoice, computerChoice) {
-   
     if (playerChoice === computerChoice) {
         return 'tie';
     } else if (playerChoice === "rock" && computerChoice === "scissors"
@@ -37,6 +36,11 @@ function updateScore(winner) {
     }
 }
 
+function showWinner(winner) {
+    winner === 'player' || winner === 'computer' 
+    ? alert(`Winner is ${winner}`) : alert('It\'s tie, try again!');
+}
+
 // human/computer score variables
 let playerScore = 0;
 let computerScore = 0;
@@ -44,9 +48,9 @@ let computerScore = 0;
 const computerChoice = getComputerChoice();
 const playerChoice = getPlayerChoice();
 
-
 function playRound(playerChoice, computerChoice) {
     let roundWinner = checkRoundWinner(playerChoice, computerChoice);
+    showWinner(roundWinner);
     updateScore(roundWinner);
 }
 
