@@ -14,6 +14,18 @@ function getPlayerChoice()  {
     return isValid(input) && inRange(input) ? input : getPlayerChoice();
 } 
 
+function checkRoundWinner(playerChoice, computerChoice) {
+   
+    if (playerChoice === computerChoice) {
+        return 'tie';
+    } else if (playerChoice === "rock" && computerChoice === "scissors"
+        || playerChoice === "scissors" && computerChoice === "paper" 
+        || playerChoice === "paper" && computerChoice === "rock"){   
+        return 'player';
+    } else {
+        return 'computer';
+    }  
+}
 
 // human/computer score variables
 let humanScore = 0;
@@ -23,4 +35,8 @@ const computerChoice = getComputerChoice();
 const playerChoice = getPlayerChoice();
 
 
-function playRound()
+function playRound(playerChoice, computerChoice) {
+    let roundWinner = checkRoundWinner(playerChoice, computerChoice);
+}
+
+ playRound(playerChoice, computerChoice);
