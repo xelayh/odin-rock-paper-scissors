@@ -1,21 +1,13 @@
-/*
-Start the game
 
-Set roundCount = 0;
-Set playerScore = 0;
-Set computerScore = 0;
+let roundCount = 0;
+let playerScore = 0;
+let computerScore = 0;
 
-While roundCount < 3
-    Step 1: Get computer choice
-    Step 2: Get player choice
-    Step 3: Compare choices
-    Step 4: Decide round winner
-    Step 5: Add 1 point to winner
-End while
+function getComputerChoice() {
+    const options = ['rock', 'paper', 'scissors'];
+    const randomIndex = Math.floor(Math.random() * options.length);
+    return options[randomIndex];
+}
 
-Compare playerScore and computerScore
-Decide game winner
-Alert the winner
+const computerChoice = getComputerChoice();
 
-End game
-*/
