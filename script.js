@@ -2,11 +2,11 @@
 const options = ['rock', 'paper', 'scissors'];
 
 // logic to get the computer choice
-const getComputerChoice = () => options[Math.floor(Math.random() * 3)];
+let getComputerChoice = () => options[Math.floor(Math.random() * 3)];
 
 // Check if the human input is valid & in range
-const isValid = (input) => input !== "" && input !== " ";
-const inRange = (input) => input === "rock" || input === "paper" || input === "scissors";
+let isValid = (input) => input !== "" && input !== " ";
+let inRange = (input) => input === "rock" || input === "paper" || input === "scissors";
 
 // logic to get the human choice
 function getPlayerChoice()  {
@@ -51,13 +51,9 @@ function showRoundWinner(winner) {
     ? alert(`Round winner: ${winner}`) : alert('It\'s tie');
 }
 
-
-
 // human/computer score variables
 let playerScore = 0;
 let computerScore = 0;
-
-
 
 function playRound(playerChoice, computerChoice) {
     let roundWinner = checkRoundWinner(playerChoice, computerChoice);
@@ -82,6 +78,7 @@ for (let i = 0; i < rounds; i++) {
 
 let gameWinner = checkGameWinner();
 showGameWinner(gameWinner);
+
 }
 
 
