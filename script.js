@@ -11,16 +11,32 @@ function getComputerChoice() {
 
 function getPlayerChoice() {
     const choice = +prompt("1) Rock 2) Paper 3) Scissors").trim();
-    return isValid(choice) ? choice : alert("Opps! That's invalid.");
+    
+    if ( isValid(choice) ){
+        
+        if (choice === 1) {
+            return "rock";
+        } else if ( choice === 2){ 
+            return "paper";
+        } else if ( choice === 3){ 
+            return "scissors";
+        }
+    } else {
+        return alert("OPs! That's invalid input, Try again.");
+    }
 }
 
 function isValid(input) {
     return +input !== NaN && +input !== 0 && +input >= 1 && +input <= 3;
 }
 
+
+
 function playerRound() {
+
     const computerChoice = getComputerChoice();
     const playerChoice = getPlayerChoice();
+
     console.log(playerChoice);
 }
 
