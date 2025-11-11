@@ -9,5 +9,15 @@ function getComputerChoice() {
     return options[randomIndex];
 }
 
-const computerChoice = getComputerChoice();
+function getPlayerChoice() {
+    const choice = prompt("1) Rock 2) Paper 3) Scissors").trim();
+}
+
+const isValid = (input) => input !== NaN && input !== 0 && input >= 1 && input <= 3;
+
+
+
+
+// const computerChoice = getComputerChoice();
+// const playerChoice = getPlayerChoice();
 
