@@ -1,10 +1,15 @@
+
 // Game options 
 const options = ['rock', 'paper', 'scissors'];
 
-// logic to get the computer choice
+// logic to get the computer's random choice
 let getComputerChoice = () => options[Math.floor(Math.random() * 3)];
 
-// Check if the human input is valid & in range
+/* Validate player's input & in range
+1- isValid: ensures input is not empty
+2- inRange: ensures input is one of the valid options
+*/ 
+
 let isValid = (input) => input !== "" && input !== " ";
 let inRange = (input) => options.includes(input);
 
@@ -15,6 +20,7 @@ function getPlayerChoice()  {
     return isValid(input) && inRange(input) ? input : getPlayerChoice();
 } 
 
+// Compare choices and decide round winner
 function checkRoundWinner(playerChoice, computerChoice) {
     if (playerChoice === computerChoice) {
         return 'tie';
@@ -27,6 +33,7 @@ function checkRoundWinner(playerChoice, computerChoice) {
     }  
 }
 
+// Compare scores and decide overall game winner
 function checkGameWinner() {
     if (playerScore === computerScore){ 
         return 'tie';
@@ -37,6 +44,7 @@ function checkGameWinner() {
     }
 }
 
+// Update score after each round
 function updateScore(winner) {
     if (winner === 'player') {
         playerScore++;
@@ -47,19 +55,10 @@ function updateScore(winner) {
     }
 }
 
+// Display Results
 function showRoundWinner(winner) {
     winner === 'player' || winner === 'computer' 
     ? alert(`Round winner: ${winner}`) : alert('It\'s tie');
-}
-
-// human/computer score variables
-let playerScore = 0;
-let computerScore = 0;
-
-function playRound(playerChoice, computerChoice) {
-    let roundWinner = checkRoundWinner(playerChoice, computerChoice);
-    showRoundWinner(roundWinner);
-    updateScore(roundWinner);
 }
 
 function showGameWinner(winner) {
@@ -67,8 +66,24 @@ function showGameWinner(winner) {
     ? alert(`Game Over! ${winner} won this game \nPlayer : [${playerScore}] Computer : [${computerScore}] `) : alert('It\'s tie, Nice Game!');
 }
 
-function playGame(rounds) {
+// Initialize player and computer score
+let playerScore = 0;
+let computerScore = 0;
 
+// Handle one round of the game
+function playRound(playerChoice, computerChoice) {
+    let roundWinner = checkRoundWinner(playerChoice, computerChoice);
+    showRoundWinner(roundWinner);
+    updateScore(roundWinner);
+}
+
+
+/* Main game loop 
+1- Plays multiple rounds
+2- Show final winner 
+*/
+
+function playGame(rounds) {
 
 for (let i = 0; i < rounds; i++) {
     const computerChoice = getComputerChoice();
