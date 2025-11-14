@@ -57,13 +57,24 @@ function updateScore(winner) {
 
 // Display Results
 function showRoundWinner(winner) {
-    winner === 'player' || winner === 'computer' 
-    ? alert(`Round winner: ${winner}`) : alert('It\'s tie');
+    winner === 'player' || winner === 'computer';
+
+    if (winner === 'player') {
+        alert(`Round winner: ${winner}`);
+    } else {
+        alert('It\'s tie');
+    }
 }
 
 function showGameWinner(winner) {
-    winner === 'player' || winner === 'computer' 
-    ? alert(`Game Over! ${winner} won this game \nPlayer : [${playerScore}] Computer : [${computerScore}] `) : alert('It\'s tie, Nice Game!');
+    winner === 'player' || winner === 'computer';
+    
+    if (winner === 'player') {
+        alert(`Game Over! ${winner} won this game \n
+        Player : [${playerScore}] Computer : [${computerScore}] `);
+    } else {
+       alert('It\'s tie, Nice Game!');
+    }
 }
 
 // Initialize player and computer score
